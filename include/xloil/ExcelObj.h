@@ -201,7 +201,7 @@ namespace xloil
     /// </summary>
     template<size_t N>
     explicit ExcelObj(const wchar_t(*str)[N])
-      : ExcelObj(std::move(PString<>(str)))
+      : ExcelObj(std::move(PString(str)))
     {}
 
     /// <summary>

@@ -1,0 +1,7 @@
+LIBRARY example.xll
+
+EXPORTS
+	xlAutoOpen
+	xlAutoClose
+	xlAutoFree12
+	xlHandleCalculationCancelled

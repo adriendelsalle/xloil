@@ -1,0 +1,13 @@
+add_library(example SHARED main.cpp addin.def)
+
+target_link_libraries(example  
+    PUBLIC 
+        # "$<LINK_LIBRARY:WHOLE_ARCHIVE,xloil>"
+        xloil
+)
+set_target_properties(example
+    PROPERTIES
+        SUFFIX ".xll"
+)
+
+target_compile_definitions(example PUBLIC _USRDLL _WINDOWS _NDEBUG)

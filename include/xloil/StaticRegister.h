@@ -248,15 +248,7 @@ namespace xloil
     }
 
     template <class TFunc>
-    StaticRegistrationBuilder(const char* entryPoint, TFunc)
-      : StaticRegistrationBuilder(
-          entryPoint,
-          detail::ArgTypes<TFunc>::funcOpts,
-          detail::ArgTypes<TFunc>::nArgs,
-          detail::ArgTypes<TFunc>::types.data()
-        )
-    {
-    }
+    StaticRegistrationBuilder(const char* entryPoint, TFunc);
 
     auto writeFuncSpec(const std::wstring_view& dllName)
     {
@@ -396,5 +388,16 @@ namespace xloil
 
     std::vector<std::shared_ptr<const RegisteredWorksheetFunc>>
       registerStaticFuncs(const wchar_t* moduleName, std::wstring& errors);
+  }
+
+  template <class TFunc>
+  StaticRegistrationBuilder::StaticRegistrationBuilder(const char* entryPoint, TFunc)
+    : StaticRegistrationBuilder(
+        entryPoint,
+        detail::ArgTypes<TFunc>::funcOpts,
+        detail::ArgTypes<TFunc>::nArgs,
+        detail::ArgTypes<TFunc>::types.data()
+      )
+  {
   }
 }

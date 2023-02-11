@@ -2,6 +2,7 @@
 #include <xloil/StaticRegister.h>
 #include <xloil/ArrayBuilder.h>
 #include <xloil/Loaders/PluginLoader.h>
+#include <xloil/Log.h>
 
 // See dodgy issues here: https://bugs.python.org/issue34309
 

@@ -15,11 +15,13 @@
 #include <xloil/ExportMacro.h>
 #include <string>
 
+#ifndef SPDLOG_ACTIVE_LEVEL
 #ifdef _DEBUG
 #define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_TRACE
 #else
 #define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_DEBUG
-#endif 
+#endif
+#endif
 
 #define SPDLOG_WCHAR_FILENAMES
 #define SPDLOG_WCHAR_TO_UTF8_SUPPORT

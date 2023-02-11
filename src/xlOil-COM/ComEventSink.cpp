@@ -328,13 +328,13 @@ namespace xloil
             break;
           }
         }
-        catch (_com_error& error)
+        catch (_com_error&)
         { 
-          XLO_ERROR(L"COM Error {0:#x}: {1}", (unsigned)error.Error(), error.ErrorMessage()); \
+          XLO_ERROR(L"COM Error");
         }
-        catch (const std::exception& e)
+        catch (const std::exception&)
         {
-          XLO_ERROR("Error during COM event handler callback: {0}", e.what());
+          XLO_ERROR("Error during COM");
         }
 
         return S_OK;

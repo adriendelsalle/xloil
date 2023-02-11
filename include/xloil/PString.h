@@ -275,6 +275,9 @@ namespace xloil
     using allocator_type = TAlloc;
     using base::_data;
 
+    using base::traits;
+    using base::length;
+
     friend BasicPStringRef<TChar>;
 
     /// <summary>
@@ -307,7 +310,7 @@ namespace xloil
     /// <param name="str">C-string, must be null terminated</param>
     /// <param name="allocator">Optional allocator instance</param>
     BasicPString(const TChar* str, TAlloc allocator = TAlloc())
-      : BasicPString((TChar)traits::length(str), allocator)
+      : BasicPString((TChar) traits::length(str), allocator)
     {
       overwrite(str, length());
     }
@@ -340,7 +343,7 @@ namespace xloil
     /// </summary>
     /// <param name="that"></param>
     BasicPString(BasicPString&& that)
-      : PStringImpl(nullptr)
+      : PStringImpl<TChar>(nullptr)
       , _alloc(that._alloc)
     {
       std::swap(_data, that._data);
@@ -453,6 +456,9 @@ namespace xloil
     using size_type = typename base::size_type;
     using char_type = typename base::char_type;
 
+    using base::_data;
+    using base::length;
+
     /// <summary>
     /// Constructs a view of an existing Pascal string given its
     /// full data buffer (including the length count).
@@ -474,7 +480,7 @@ namespace xloil
       if (!_data)
         _data = that._data;
       else
-        *(PStringImpl*)(this) = that;
+        *(base*)(this) = that;
 
       return *this;
     }
