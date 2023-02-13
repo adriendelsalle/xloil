@@ -1,5 +1,4 @@
 #include <spdlog/fmt/bundled/format.h>
-#include <spdlog/fmt/bundled/xchar.h>
 #include <xlOil/StringUtils.h>
 #include "ExportMacro.h"
 
@@ -41,7 +40,7 @@ namespace xloil
       {
         // This 250 size is the same default as in spdlog, the buffer is actually dynamic
         fmt::basic_memory_buffer<TChar, 250> buf;
-        fmt::format_to(std::back_inserter(buf), formatStr, std::forward<Args>(args)...);
+        fmt::format_to(buf, formatStr, std::forward<Args>(args)...);
         return toUtf8(std::basic_string<TChar>(buf.data(), buf.size()));
       }
       catch (...)

@@ -89,7 +89,7 @@ namespace xloil
         else
         {
           // TODO: converting Python->ExcelObj->Variant is not very efficient!
-          const auto val = FromPyObj()(pyval.ptr());
+          const auto val = FromPyObj()(pyVal.ptr());
           // Must release gil when setting values in as this may trigger calcs 
           // which call back into other python functions.
           py::gil_scoped_release noGil;
